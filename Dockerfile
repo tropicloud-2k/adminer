@@ -18,4 +18,3 @@ RUN apk add curl \
 		
 EXPOSE 80
 CMD /adminer/start.sh
-
