@@ -16,4 +16,4 @@ RUN apk add curl unzip \
 	unzip master.zip && rm -f master.zip
 
 EXPOSE 80
-CMD start.sh
+CMD /app/start.sh
