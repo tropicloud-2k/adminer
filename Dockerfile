@@ -1,8 +1,8 @@
 FROM alpine:3.2
 MAINTAINER admin@tropicloud.net
 
-ADD . /adminer
-RUN apk add curl \
+ADD . /app
+RUN apk add curl unzip \
 	php-cli \
 	php-common \
 	php-mysql \
@@ -14,7 +14,9 @@ RUN apk add curl \
 	php-pgsql \
 	php-sqlite3 \
 	--update && \
-	curl -sL http://www.adminer.org/latest-en.php > /adminer/index.php
-		
+	curl -sL http://www.adminer.org/latest-en.php > /app/index.php
+	curl -sL https://github.com/interconnectit/Search-Replace-DB/archive/master.zip > /app/master.zip && \
+	unzip /app/master.zip && rm -f /app/master.zip
+
 EXPOSE 80
-CMD /adminer/start.sh
+CMD /app/start.sh
